@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Utopia in Blank - Made with Perplexity",
+  "version": "1.0",
+  "description": "Load Utopia Education with Perplexity credit",
+  "permissions": ["scripting", "webRequest", "tabs"],
+  "host_permissions": [
+    "https://utopiaweb.org/*",
+    "https://*.sites.google.com/*",
+    "about:blank",
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["about:blank"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://*.sites.google.com/*"],
+      "js": ["google-sites-inject.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Utopia in Blank"
+  }
+}
